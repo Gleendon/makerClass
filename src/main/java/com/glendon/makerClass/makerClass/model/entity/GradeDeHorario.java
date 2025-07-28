@@ -13,7 +13,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class GradeDeHorario { // Refere-se a alocação de todas as materias referente a uma turma e um turno
+public class GradeDeHorario {
+    // Refere-se a alocação de todas as materias referente a uma turma e um turno
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

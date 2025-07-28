@@ -1,27 +1,16 @@
-package com.glendon.makerClass.makerClass.model.entity;
+package com.glendon.makerClass.makerClass.model.dto;
 
+import com.glendon.makerClass.makerClass.model.entity.Turma;
 import com.glendon.makerClass.makerClass.model.enumerate.TipoDisciplina;
 import com.glendon.makerClass.makerClass.model.enumerate.Turno;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.Serializable;
 import java.util.List;
 
-@Entity
 @Getter
 @Setter
-public class Disciplina implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class DisciplinaDto {
     private String nome;
     private String codigo;
     private Integer preferencia; // TODO: Pensar em como fazer isso
@@ -29,5 +18,5 @@ public class Disciplina implements Serializable {
     private TipoDisciplina tipoDisciplina;
     private List<Turno> turnos;
     private List<Turma> turmas; // TODO: avaliar a necessidade
-
 }
+

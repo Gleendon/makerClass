@@ -21,7 +21,6 @@ public class Turma implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer ano;
     private String nome;
     private Turno turno;
     private Year anoLetivo;

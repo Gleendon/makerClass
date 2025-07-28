@@ -1,15 +1,18 @@
 package com.glendon.makerClass.makerClass.service;
 
+import com.glendon.makerClass.makerClass.model.dto.AlocacaoDto;
 import com.glendon.makerClass.makerClass.model.entity.Alocacao;
-import com.glendon.makerClass.makerClass.repository.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.glendon.makerClass.makerClass.repository.AlocacaoRepository;
+import com.glendon.makerClass.makerClass.repository.DisciplinaRepository;
+import com.glendon.makerClass.makerClass.repository.ProfessorRepository;
+import com.glendon.makerClass.makerClass.repository.TurmaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/professor")
+@Service
 public class AlocacaoService {
 
     private final AlocacaoRepository alocacaoRepository;
@@ -17,7 +20,7 @@ public class AlocacaoService {
     private final DisciplinaRepository disciplinaRepository;
     private final TurmaRepository turmaRepository;
 
-
+    @Autowired
     public AlocacaoService(ProfessorRepository professorRepository, DisciplinaRepository disciplinaRepository,
                            TurmaRepository turmaRepository, AlocacaoRepository alocacaoRepository) {
         this.alocacaoRepository = alocacaoRepository;
@@ -38,7 +41,7 @@ public class AlocacaoService {
         return alocacaoRepository.save(alocacao);
     }
 
-    public Alocacao atualizar(Long id, Alocacao alocacao) {
+    public Alocacao atualizar(Long id, AlocacaoDto alocacao) {
         return alocacaoRepository.findById(id)
                 .map(alocacaoExistente -> {
                     alocacaoExistente.setProfessor(professorRepository.findById(alocacao.getProfessor().getId()).get());

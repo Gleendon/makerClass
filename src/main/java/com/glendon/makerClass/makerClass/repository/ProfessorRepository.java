@@ -7,6 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProfessorRepository extends JpaRepository<Professor, Long> {
 
-    // Exemplo de consulta personalizada (opcional)
-    Professor findByNome(String nome);
 }
