@@ -46,7 +46,7 @@ public class ProfessorService {
                     List<Horario> horarios = horarioRepository.findAllById(professorDTO.getDisponibilidadeHorarioIds());
                     List<Disciplina> disciplinas = disciplinaRepository.findAllById(professorDTO.getPreferenciaDisciplinaIds());
 
-                    professorExistente.setDisponibilidaDeHorario(horarios);
+                    professorExistente.setDisponibilidadeDeHorario(horarios);
                     professorExistente.setPreferenciaDisciplina(disciplinas);
 
                     return professorRepository.save(professorExistente);

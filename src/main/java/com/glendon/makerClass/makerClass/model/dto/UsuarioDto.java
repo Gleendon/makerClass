@@ -1,4 +1,5 @@
-package com.glendon.makerClass.makerClass.dto;
+package com.glendon.makerClass.makerClass.model.dto;
+
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.glendon.makerClass.makerClass.model.enumerate.Cargo;

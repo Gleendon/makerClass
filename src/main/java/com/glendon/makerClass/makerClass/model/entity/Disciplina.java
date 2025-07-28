@@ -2,10 +2,7 @@ package com.glendon.makerClass.makerClass.model.entity;
 
 import com.glendon.makerClass.makerClass.model.enumerate.TipoDisciplina;
 import com.glendon.makerClass.makerClass.model.enumerate.Turno;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,10 +21,17 @@ public class Disciplina implements Serializable {
     private Long id;
     private String nome;
     private String codigo;
-    private Integer preferencia; // TODO: Pensar em como fazer isso
     private Float cargaHoraria;
-    private TipoDisciplina tipoDisciplina;
-    private List<Turno> turnos;
-    private List<Turma> turmas; // TODO: avaliar a necessidade
 
+    @Enumerated(EnumType.STRING)
+    private TipoDisciplina tipoDisciplina;
+
+    @ElementCollection(targetClass = Turno.class, fetch = FetchType.LAZY)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "disciplina_turnos", joinColumns = @JoinColumn(name = "disciplina_id"))
+    @Column(name = "turno")
+    private List<Turno> turnos;
+
+    @ManyToMany(mappedBy = "disciplinas", fetch = FetchType.LAZY)
+    private List<Turma> turmas;
 }

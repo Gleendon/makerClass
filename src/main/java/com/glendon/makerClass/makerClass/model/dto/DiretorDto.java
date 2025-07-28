@@ -38,4 +38,3 @@ public class DiretorDto {
 
     private LocalTime dataCadastro;
 }
-

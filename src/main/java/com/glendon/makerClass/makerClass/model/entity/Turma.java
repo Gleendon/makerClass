@@ -1,10 +1,7 @@
 package com.glendon.makerClass.makerClass.model.entity;
 
 import com.glendon.makerClass.makerClass.model.enumerate.Turno;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,8 +19,16 @@ public class Turma implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private Turno turno;
     private Year anoLetivo;
-    private List<Disciplina> disciplinas;
 
+    @Enumerated(EnumType.STRING)
+    private Turno turno;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "turma_disciplinas",
+            joinColumns = @JoinColumn(name = "turma_id"),
+            inverseJoinColumns = @JoinColumn(name = "disciplina_id")
+    )
+    private List<Disciplina> disciplinas;
 }
